@@ -77,7 +77,7 @@ function App() {
             .checkToken(localStorage.getItem('token'))
             .then((res) => {
                 setLoggedIn(true);
-                setUserEmail(res.data.email);
+                setUserEmail(res.email);
                 history.push('/')
             })
             .catch((err) => {
@@ -117,9 +117,9 @@ function App() {
 
     function handleCardLike(card) {
         // проверим на предмет лайка от пользователя ранее
-        const isLiked = card
-            .likes
-            .some(i => i._id === currentUser._id);
+        const isLiked = card.likes.some( (i) => {
+            return i === currentUser._id
+          })
 
         //запрос на сервер за лайком/снятием лайка
         if (!isLiked) {
@@ -260,7 +260,6 @@ function App() {
                             <Register onRegister={handleRegister}/>
                         </Route>
                         <ProtectedRoute
-                            exact="exact"
                             path='/'
                             loggedIn={loggedIn}
                             component={Main}

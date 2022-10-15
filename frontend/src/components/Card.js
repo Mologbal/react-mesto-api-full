@@ -5,16 +5,18 @@ import {CurrentUserContext} from '../contexts/CurrentUserContext'
 function Card({card, onCardClick, onCardLike, onCardDelete}) {
     const currentUser = React.useContext(CurrentUserContext);
 
-    const isOwn = card.owner._id === currentUser._id; // Определяем, являемся ли мы владельцем текущей карточки
+    const isOwn = card.owner === currentUser._id; // Определяем, являемся ли мы владельцем текущей карточки
     const cardDeleteButtonClassName = (
         `elements__delete-button ${isOwn
             ? 'elements__delete-button_active'
             : ''}`
     );
 
+
+
     const isLiked = card
         .likes
-        .some(i => i._id === currentUser._id); // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
+        .some(i => i === currentUser._id); // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
     const cardLikeButtonClassName = (
         `elements__element-like ${isLiked
             ? 'elements__element-like_activated'

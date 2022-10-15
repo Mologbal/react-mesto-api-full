@@ -15,7 +15,8 @@ export default class Api {
     //получаем изначальные карточки из сервера
     getInitialCards() {
         return fetch(`${this._baseUrl}/cards`, {
-            headers: {...this._headers, Authorization: `Bearer ${localStorage.getItem("token")}`
+            headers: {Accept: "application/json",
+            "Content-type": "application/json; charset=utf-8", Authorization: `Bearer ${localStorage.getItem("token")}`
         }
         }).then(
             res => this._serverAnswer(res)
@@ -26,7 +27,8 @@ export default class Api {
     addCard(data) {
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
-            headers: {...this._headers, Authorization: `Bearer ${localStorage.getItem("token")}`
+            headers: {Accept: "application/json",
+            "Content-type": "application/json; charset=utf-8", Authorization: `Bearer ${localStorage.getItem("token")}`
         },
             body: JSON.stringify({name: data.name, link: data.link})
         }).then(res => this._serverAnswer(res))
@@ -36,7 +38,8 @@ export default class Api {
     deleteCard(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}`, {
             method: 'DELETE',
-            headers: {...this._headers, Authorization: `Bearer ${localStorage.getItem("token")}`
+            headers: {Accept: "application/json",
+            "Content-type": "application/json; charset=utf-8", Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         }).then(res => this._serverAnswer(res))
     }
@@ -45,7 +48,8 @@ export default class Api {
     setLike(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: 'PUT',
-            headers: {...this._headers, Authorization: `Bearer ${localStorage.getItem("token")}`
+            headers: {Accept: "application/json",
+            "Content-type": "application/json; charset=utf-8", Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         }).then(res => this._serverAnswer(res))
     }
@@ -54,14 +58,16 @@ export default class Api {
     deleteLike(cardId) {
         return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
             method: 'DELETE',
-            headers: {...this._headers, Authorization: `Bearer ${localStorage.getItem("token")}`
+            headers: {Accept: "application/json",
+            "Content-type": "application/json; charset=utf-8", Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         }).then(res => this._serverAnswer(res))
     }
 
     //инфа о пользователе с сервера
     getUserInfo() {
-        return fetch(`${this._baseUrl}/users/me`, {headers: {Authorization: `Bearer ${localStorage.getItem("token")}`},}).then(
+        return fetch(`${this._baseUrl}/users/me`, {headers: {Accept: "application/json",
+        "Content-type": "application/json; charset=utf-8", Authorization: `Bearer ${localStorage.getItem("token")}`},}).then(
             res => this._serverAnswer(res)
         )
     }
@@ -70,7 +76,8 @@ export default class Api {
     editUserInfo(data) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
-            headers: {...this._headers, Authorization: `Bearer ${localStorage.getItem("token")}`
+            headers: {Accept: "application/json",
+            "Content-type": "application/json; charset=utf-8", Authorization: `Bearer ${localStorage.getItem("token")}`
         },
             body: JSON.stringify({name: data.name, about: data.about})
         }).then(res => this._serverAnswer(res))
@@ -80,7 +87,8 @@ export default class Api {
     editAvatar(data) {
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
-            headers: {...this._headers, Authorization: `Bearer ${localStorage.getItem("token")}`
+            headers: {Accept: "application/json",
+            "Content-type": "application/json; charset=utf-8", Authorization: `Bearer ${localStorage.getItem("token")}`
         },
             body: JSON.stringify({avatar: data.avatar})
         }).then(res => this._serverAnswer(res))

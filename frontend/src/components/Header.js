@@ -7,7 +7,7 @@ function Header(props) {
         <header className="header">
             <img className="header__logo" src={headerLogoPath} alt="Место логотип"/>
             <Switch>
-                <Route exact="exact" path='/'>
+                <Route path='/'>
                     <div className='header__container'>
                         <p className='header__email'>{props.userEmail}</p>
                         <Link className='header__link' to='sign-in' onClick={props.onSignOut}>
