@@ -11,7 +11,7 @@ const ErrorDefault = require('./errors/allErrors');
 const loginAndRegister = require('./routes/index');
 const { auth } = require('./middlewares/auth');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3002 } = process.env;
 const app = express();
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
@@ -34,6 +34,8 @@ app.use(cors({
     'localhost:3000',
     'http://localhost:3000',
     'https://localhost:3000',
+    'https://localhost:3001',
+    'https://localhost:3002',
     'http://mologbal.nomoredomains.icu/',
     'https://mologbal.nomoredomains.icu/'],
 }));

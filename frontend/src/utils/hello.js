@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:3001'
+export const BASE_URL = 'http://localhost:3002'
 
 //шаблон, чтоб не дублировать код
 function getRes(res) {
@@ -13,7 +13,8 @@ export const register = (email, password) => {
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            authorization: '1795560e-42d9-4d62-83c9-e05719bf38b6',
         },
         body: JSON.stringify({email, password})
     }).then(getRes)
@@ -24,7 +25,8 @@ export const authorise = (email, password) => {
     return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            authorization: '1795560e-42d9-4d62-83c9-e05719bf38b6',
         },
         body: JSON.stringify({email, password})
     }).then(getRes)
@@ -41,3 +43,4 @@ export const checkToken = (token) => {
         }
     }).then(getRes)
 }
+

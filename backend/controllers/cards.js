@@ -5,7 +5,7 @@ const ForbiddenError = require('../errors/forbiddenError');
 
 // выдаст список карточек
 const getCards = (req, res, next) => {
-  Card.find({})
+  Card.find({}).sort([['createdAt', -1]])
     .then((cards) => res.status(200).send(cards))
     .catch(next);
 };
@@ -13,11 +13,12 @@ const getCards = (req, res, next) => {
 // создаст новую карточку
 const createCard = (req, res, next) => {
   const { name, link } = req.body;
+  console.log(req.body)
   Card.create({ name, link, owner: req.user._id })
     .then((card) => res.status(201).send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestError('Данные некоректны'));
+        next(new BadRequestError({ err }));
       } else {
         next(err);
       }

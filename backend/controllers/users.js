@@ -4,6 +4,7 @@ const NotFound = require('../errors/notFoundError');
 const ConflictError = require('../errors/conflictError');
 const BadRequestError = require('../errors/badRequestError');
 const { getJwtToken } = require('../utils/jwt');
+const { errorLogger } = require('../middlewares/logger');
 
 // выдаст список пользователей
 const getUsers = (req, res, next) => {
@@ -48,8 +49,11 @@ const createUser = (req, res, next) => {
   const {
     name, about, avatar, email, password,
   } = req.body;
-  if (!email || !password) {
-    throw new BadRequestError('Email или пароль не могут быть пустыми');
+  if (!email) {
+    throw new BadRequestError('Email  не могут быть пустыми');
+  }
+  if (!password) {
+    throw new BadRequestError('Password пустой');
   }
   return bcrypt
     .hash(password, 10)
