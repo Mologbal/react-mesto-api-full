@@ -251,7 +251,7 @@ function App() {
         <CurrentUserContext.Provider value={currentUser}>
             <section className='content'>
                 <div className="page">
-                    <Header loggedIn={loggedIn} userEmail={userEmail}/>
+                    <Header loggedIn={loggedIn} userEmail={userEmail} handleSignOut={handleSignOut}/>
                     <Switch>
                         <Route path="/sign-in">
                             <Login onLogin={handleLogin}/>
