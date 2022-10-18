@@ -96,7 +96,7 @@ export default class Api {
 }
 
 export const apiConfig = new Api({
-    baseUrl: 'http://localhost:3002',
+    baseUrl: 'https://api.mologbal.nomoredomains.icu',
     headers: {
         Accept: "application/json",
         'Content-Type': 'application/json'

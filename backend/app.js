@@ -36,8 +36,8 @@ app.use(cors({
     'https://localhost:3000',
     'https://localhost:3001',
     'https://localhost:3002',
-    'http://mologbal.nomoredomains.icu/',
-    'https://mologbal.nomoredomains.icu/'],
+    'http://mologbal.nomoredomains.icu',
+    'https://mologbal.nomoredomains.icu'],
 }));
 
 app.use('/', loginAndRegister);

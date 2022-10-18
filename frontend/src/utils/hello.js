@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:3002'
+export const BASE_URL = 'https://api.mologbal.nomoredomains.icu'
 
 //шаблон, чтоб не дублировать код
 function getRes(res) {
